@@ -1,0 +1,11 @@
+factor_name,period,universe,peak_horizon,peak_abs_ic,half_life_horizon,recommended_rebalance_frequency,curve_monotonicity,reliability_note
+beta,post_event,all,40,0.15453386663761598,,1,peak_then_decay,never_decayed; recommend rebalance=1 (low confidence)
+liquidity,post_event,all,40,0.029850094130292784,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+noise_alpha,post_event,all,20,0.04106627477047234,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+noise_beta,post_event,all,20,0.04266101879110851,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+order_or_contract,post_event,all,60,0.10505241532418895,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+price_momentum,post_event,all,60,0.027689418744525532,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+quality,post_event,all,40,0.06335053442205886,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+revenue_revision,post_event,all,60,0.06189104540058435,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+theme_heat,post_event,all,60,0.0644294511497128,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)
+valuation,post_event,all,60,0.04811527635113418,,1,non_monotonic,never_decayed; recommend rebalance=1 (low confidence)

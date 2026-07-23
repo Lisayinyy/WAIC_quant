@@ -1,0 +1,71 @@
+# ============================================================
+# .gitignore — what to exclude from the WAIC_quant repo
+# ============================================================
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.venv/
+venv/
+env/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# --- Build / Distribution ---
+build/
+dist/
+*.egg-info/
+
+# --- Project-specific: keep outputs/ but exclude huge intermediate CSVs ---
+# Keep report.md and small CSVs, exclude the multi-MB intermediate files
+# (users can regenerate these by running run_demo.py)
+outputs/daily_ic.csv
+outputs/daily_ic_partial.csv
+outputs/forward_returns.csv
+outputs/rolling_ic.csv
+outputs/stability_alerts.csv
+outputs/quantile_returns.csv
+outputs/partial_incremental_ic.csv
+
+# Keep these — they're small and useful for inspection:
+# outputs/report.md
+# outputs/factor_horizon_summary.csv
+# outputs/factor_horizon_summary_best.csv
+# outputs/factor_half_life.csv
+# outputs/ic_decay_curve.csv
+# outputs/rebalance_comparison.csv
+# outputs/portfolio_summary.csv
+# outputs/figures/*.png
+
+# --- Site build (deployable separately) ---
+# The site/ folder is a self-contained static website.
+# Commit it so reviewers can preview without running the pipeline.
+# (If the site grows beyond ~5MB, move it to a separate repo.)
+
+# --- Secrets / local overrides ---
+.env
+.env.local
+*.local.yaml
+secrets.json
+
+# --- Logs ---
+*.log
+logs/
