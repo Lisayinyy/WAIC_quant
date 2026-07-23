@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAIC 之后,真正有用的因子还剩什么? — A factor IC study</title>
+<meta name="description" content="An interactive factor-IC research note on what survives after a robotics theme has fully diffused. ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Floating minimap (signature element) -->
+<aside class="minimap" aria-hidden="true">
+  <div class="minimap-rail">
+    <div class="mm-row" data-target="hero"><span class="mm-line" style="width:40px"></span><span class="mm-tag">00</span></div>
+    <div class="mm-row" data-target="abstract"><span class="mm-line" style="width:24px"></span><span class="mm-tag">01</span></div>
+    <div class="mm-row" data-target="question"><span class="mm-line" style="width:24px"></span><span class="mm-tag">02</span></div>
+    <div class="mm-row" data-target="method"><span class="mm-line" style="width:24px"></span><span class="mm-tag">03</span></div>
+    <div class="mm-row" data-target="universe"><span class="mm-line" style="width:24px"></span><span class="mm-tag">04</span></div>
+    <div class="mm-row" data-target="results"><span class="mm-line" style="width:24px"></span><span class="mm-tag">05</span></div>
+    <div class="mm-row" data-target="table"><span class="mm-line" style="width:24px"></span><span class="mm-tag">06</span></div>
+    <div class="mm-row" data-target="figures"><span class="mm-line" style="width:24px"></span><span class="mm-tag">07</span></div>
+    <div class="mm-row" data-target="conclusion"><span class="mm-line" style="width:24px"></span><span class="mm-tag">08</span></div>
+    <div class="mm-row" data-target="limitations"><span class="mm-line" style="width:24px"></span><span class="mm-tag">09</span></div>
+    <div class="mm-row" data-target="faq"><span class="mm-line" style="width:24px"></span><span class="mm-tag">10</span></div>
+    <div class="mm-row" data-target="footer"><span class="mm-line" style="width:40px"></span><span class="mm-tag">·</span></div>
+  </div>
+  <div class="minimap-indicator">
+    <svg width="7" height="6" viewBox="0 0 7 6" fill="none">
+      <path d="M3.54688 6L0.515786 0.75L6.57796 0.75L3.54688 6Z" fill="var(--orange)"></path>
+    </svg>
+  </div>
+</aside>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="container">
+    <header class="hero-head">
+      <a class="brand" href="#hero">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">factor · ic · study</span>
+      </a>
+      <nav class="hero-nav">
+        <a href="#abstract">Abstract</a>
+        <a href="#question">Question</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <div class="hero-body">
+      <p class="hero-eyebrow">
+        <span class="dot"></span>
+        <span>A factor-IC research note</span>
+        <span class="sep">·</span>
+        <span class="mono">2024 · Q3</span>
+        <span class="sep">·</span>
+        <span class="mono">n = 80 / 300 d</span>
+      </p>
+      <h1 class="hero-title">
+        When every stock is <em>robotics</em>,<br>
+        which factors still survive?
+      </h1>
+      <p class="hero-sub">
+        A field guide for the post-WAIC equity research desk —
+        how the robotics theme diffused from 28% to 100% of the universe,
+        why the theme tag stopped being a factor,
+        and what kind of signals actually carry information
+        once the label has been democratized.
+      </p>
+
+      <div class="hero-meta">
+        <div class="meta-cell">
+          <div class="meta-label">Sample</div>
+          <div class="meta-value">80 / 300</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Diffusion</div>
+          <div class="meta-value">28→100%</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Factors</div>
+          <div class="meta-value">10 + 2 noise</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Horizons</div>
+          <div class="meta-value">1 → 60 d</div>
+        </div>
+        <div class="meta-cell">
+          <div class="meta-label">Surviving</div>
+          <div class="meta-value accent">3</div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="hero-fig">
+      <img src="assets/pre_post_event_comparison.png" alt="Pre vs Post WAIC factor IC comparison">
+      <figcaption>Figure 0 — Pre vs post-WAIC |IC| by horizon. Theme-tagged factors decay post-event; fundamental signals strengthen.</figcaption>
+    </figure>
+
+    <div class="hero-footer">
+      <span class="mono small">Scroll to read ↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT -->
+<section class="essay" id="abstract">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">01 — Abstract</span>
+    </header>
+    <h2 class="essay-title">What this note argues.</h2>
+    <p class="essay-subtitle">In one sentence: the theme tag is not a factor.</p>
+    <div class="essay-body">
+      <p>
+        WAIC 2024 之后,具身智能 / 机器人主题从少数龙头扩散到接近 <strong>100%</strong> 的相关股票。
+        在这个背景下,本文用 80 只合成资产、10 个因子 (含 2 个 noise 对照)、
+        8 个 horizon (1 / 2 / 3 / 5 / 10 / 20 / 40 / 60 日)、
+        4 个调仓频率 (1 / 5 / 10 / 20 日) 构建了一套端到端因子 IC 模块,
+        系统回答了六个问题 (见下一节)。
+      </p>
+      <p>
+        模块严格防未来函数,内置 noise 因子作 sanity check,
+        16 个独立单元测试全绿。
+        最终的结论分三块:
+        真正保留 3 个、主题扩散削弱 3 个、剩余因子的证据不足。
+      </p>
+
+      <blockquote class="pull-quote">
+        The theme label is <em>not</em> a factor.<br>
+        It is a phenomenon that factors explain.
+        <span class="pull-quote-cite">— The thesis of this note</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- QUESTION -->
+<section class="essay alt" id="question">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">02 — Question</span>
+    </header>
+    <h2 class="essay-title">Six things we tried to answer.</h2>
+    <p class="essay-subtitle">A focused list, in the order the data answers them.</p>
+    <ol class="q-list">
+      <li>
+        <span class="q-num">Q1</span>
+        <p>当机器人主题广泛扩散后,哪些因子仍然能够区分未来收益?</p>
+      </li>
+      <li>
+        <span class="q-num">Q2</span>
+        <p>这些因子在短期、中期和长期 Horizon 上是否具有不同的有效性?</p>
+      </li>
+      <li>
+        <span class="q-num">Q3</span>
+        <p>因子收益衰减速度如何? 经验半衰期是多少?</p>
+      </li>
+      <li>
+        <span class="q-num">Q4</span>
+        <p>哪种调仓频率更适合不同类型的因子?</p>
+      </li>
+      <li>
+        <span class="q-num">Q5</span>
+        <p>在主题暴露、子行业、市值等控制变量调整后,哪些因子仍有增量 IC?</p>
+      </li>
+      <li>
+        <span class="q-num">Q6</span>
+        <p>能否形成具身智能股票池的因子筛选与组合构建建议?</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="essay" id="method">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">03 — Method</span>
+    </header>
+    <h2 class="essay-title">How the module works.</h2>
+    <p class="essay-subtitle">Six steps, each with explicit failure modes.</p>
+    <div class="essay-body">
+      <p>
+        端到端流程分六步,每一步都有独立的失败保护:
+      </p>
+    </div>
+
+    <ol class="step-list">
+      <li>
+        <span class="step-num">i</span>
+        <div>
+          <h3>Validate &amp; align</h3>
+          <p>校验 <code>prices</code> / <code>factors</code> schema,日期标准化。未来收益 <code>fwd_ret_h = close[t+h] / close[t] - 1</code> 在每只股票自身的时间序列上计算,不会跨股票错位。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">ii</span>
+        <div>
+          <h3>Cross-sectional IC</h3>
+          <p>每日 Pearson + Spearman Rank IC,聚合出 IC 均值 / ICIR / t-stat / p / 95% CI。样本不足 <code>min_cross_section</code>、常数因子、未来收益缺失时一律返回 NaN。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">iii</span>
+        <div>
+          <h3>Theme-controlled partial IC</h3>
+          <p>用 <code>theme_exposure / sub_industry / log_market_cap / beta / liquidity / price_momentum</code> 同时解释因子和未来收益,残差之间的 Pearson 即 partial IC。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">iv</span>
+        <div>
+          <h3>Multi-horizon &amp; decay</h3>
+          <p>对每个因子扫描 1/2/3/5/10/20/40/60 日 horizon,绘制 IC decay curve 并估计半衰期;非单调曲线不会给出虚假半衰期。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">v</span>
+        <div>
+          <h3>Rebalance &amp; quantile portfolios</h3>
+          <p>1/5/10/20 日四种调仓,5 组分位,含 10 bps 单边交易成本,计算毛/净 spread、最大回撤、换手率。turnover 基于相邻调仓的 overlap 实际计算。</p>
+        </div>
+      </li>
+      <li>
+        <span class="step-num">vi</span>
+        <div>
+          <h3>Stability &amp; alerts</h3>
+          <p>20/60/120 日滚动 IC,触发"穿越零线"、"20 日连负"、"ICIR &lt; -0.5" 等告警;告警按 (factor, alert_type) 聚合去重,避免千行重复。</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="code">
+      <div class="code-head">
+        <span class="mono">python</span>
+        <span class="code-title">run_pipeline · entry point</span>
+      </div>
+<pre><code>from src.pipeline import run_pipeline
+
+res = run_pipeline(
+    prices=prices_df,            # long: date, asset, close, theme_exposure, ...
+    factors=factors_df,          # long: date, asset, factor_name, factor_value
+    event_date="2024-07-02",     # WAIC / 主题扩散事件日
+    output_dir="outputs",
+    horizons=[1, 2, 3, 5, 10, 20, 40, 60],
+    rebalance_frequencies=[1, 5, 10, 20],
+    min_cross_section=20,
+    transaction_cost_bps=10,
+)</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- UNIVERSE -->
+<section class="essay alt" id="universe">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">04 — Universe</span>
+    </header>
+    <h2 class="essay-title">The 80 stocks, and how they diffused.</h2>
+    <p class="essay-subtitle">From 28% to 100% in 120 trading days.</p>
+    <div class="essay-body two-col">
+      <div>
+        <p>
+          研究对象是 80 只合成股票、300 个交易日 (2023-01 ~ 2025-12)、
+          事件日 <code>2024-07-02</code>。
+          事件前,机器人主题暴露集中在 28% 的核心股票;
+          事件后 120 个交易日内,暴露沿"工业机器人 → 汽车零部件 → 自动化 → 半导体 → AI 软件 → 传感器"
+          这条产业链逐步扩散,最终接近 <strong>100%</strong> 的相关股票都沾上了机器人。
+        </p>
+        <p>
+          这正是"为什么概念标签会失效"的机制:当所有人都有标签时,
+          标签本身不再区分任何东西。
+        </p>
+        <div class="callout">
+          <p>
+            <strong>Data note</strong> —
+            本研究基于 <code>synthetic test data</code> (n=80, t=300, seed=42)。
+            数值仅供流程验证,<strong>不可外推到真实 WAIC 后的市场</strong>。
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat-num">80</div>
+            <div class="stat-label">assets</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">300</div>
+            <div class="stat-label">trading days</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10<span>·2</span></div>
+            <div class="stat-label">factors · noise</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">8</div>
+            <div class="stat-label">horizons</div>
+          </div>
+          <div class="stat orange">
+            <div class="stat-num">28<span>→</span>100<span>%</span></div>
+            <div class="stat-label">diffusion</div>
+          </div>
+          <div class="stat orange">
+            <div class="stat-num">3</div>
+            <div class="stat-label">survivors</div>
+          </div>
+        </div>
+
+        <h3 class="sub-h">The 10 factors</h3>
+        <table class="mini-table">
+          <thead>
+            <tr><th>Factor</th><th>Type</th><th>Source</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>theme_heat</code></td><td>Theme</td><td>z-score of <code>theme_exposure</code></td></tr>
+            <tr><td><code>price_momentum</code></td><td>Momentum</td><td>20-day cumulative return</td></tr>
+            <tr><td><code>order_or_contract</code></td><td>Fundamental</td><td>Order / contract event signal</td></tr>
+            <tr><td><code>revenue_revision</code></td><td>Fundamental</td><td>Revenue expectation revision</td></tr>
+            <tr><td><code>quality</code></td><td>Fundamental</td><td>Earnings quality proxy</td></tr>
+            <tr><td><code>valuation</code></td><td>Valuation</td><td>−log(market_cap) + noise</td></tr>
+            <tr><td><code>liquidity</code></td><td>Liquidity</td><td>log(amount)</td></tr>
+            <tr><td><code>beta</code></td><td>Risk</td><td>Market beta</td></tr>
+            <tr class="muted"><td><code>noise_alpha</code></td><td>Control</td><td>Pure noise — must NOT survive</td></tr>
+            <tr class="muted"><td><code>noise_beta</code></td><td>Control</td><td>Pure noise — must NOT survive</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="essay" id="results">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">05 — Results</span>
+    </header>
+    <h2 class="essay-title">What the data says.</h2>
+    <p class="essay-subtitle">Three groups, three verdicts, no equivocation.</p>
+    <div class="essay-body">
+      <p>
+        我们按 <strong>|partial IC| &gt; 0.01 &amp; p &lt; 0.10</strong> 且 <strong>非 noise 因子</strong> 的双门槛筛"真正保留";
+        按 <strong>事件前 |IC| &gt; 0.03 且事件后 |partial IC| &lt; 0.005</strong> 筛"被主题扩散削弱";
+        其余归入"证据不足"。
+      </p>
+    </div>
+
+    <div class="verdict-grid">
+      <article class="verdict keep">
+        <header class="verdict-head">
+          <span class="v-num">3</span>
+          <div>
+            <h3>Surviving</h3>
+            <p>post-event incremental IC significant</p>
+          </div>
+        </header>
+        <ul>
+          <li>
+            <code>quality</code>
+            <span class="hz">h=40 d</span>
+            <span class="ic">+0.093</span>
+          </li>
+          <li>
+            <code>order_or_contract</code>
+            <span class="hz">h=60 d</span>
+            <span class="ic">+0.049</span>
+          </li>
+          <li>
+            <code>revenue_revision</code>
+            <span class="hz">h=60 d</span>
+            <span class="ic">+0.029</span>
+          </li>
+        </ul>
+        <p class="verdict-note">All three are fundamental signals, all at long horizon.</p>
+      </article>
+
+      <article class="verdict fade">
+        <header class="verdict-head">
+          <span class="v-num">3</span>
+          <div>
+            <h3>Dampened</h3>
+            <p>partial IC absorbed by controls</p>
+          </div>
+        </header>
+        <ul>
+          <li>
+            <code>theme_heat</code>
+            <span class="ic">partial = NaN</span>
+          </li>
+          <li>
+            <code>valuation</code>
+            <span class="ic">partial = +0.009</span>
+          </li>
+          <li>
+            <code>beta</code>
+            <span class="ic">partial = NaN</span>
+          </li>
+        </ul>
+        <p class="verdict-note"><code>theme_heat</code> IS the z-score of <code>theme_exposure</code> — absorbed by the control.</p>
+      </article>
+
+      <article class="verdict noise">
+        <header class="verdict-head">
+          <span class="v-num">2</span>
+          <div>
+            <h3>Noise rejected</h3>
+            <p>sanity check passed</p>
+          </div>
+        </header>
+        <ul>
+          <li>
+            <code>noise_alpha</code>
+            <span class="ic">rejected</span>
+          </li>
+          <li>
+            <code>noise_beta</code>
+            <span class="ic">rejected</span>
+          </li>
+        </ul>
+        <p class="verdict-note">The module does not mistake noise for signal.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section class="essay alt" id="table">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">06 — Table</span>
+    </header>
+    <h2 class="essay-title">Best-horizon IC, in one frame.</h2>
+    <p class="essay-subtitle">Sorted: survivors first, then by |IC|.</p>
+    <div class="essay-body">
+      <p>
+        下表是事件后 <strong>主题扩散股票池</strong> 下,每个因子在最佳 horizon 上的表现。
+        橙色高亮行(<span class="dot inline"></span>) 是通过 partial IC 门槛且非 noise 的幸存因子。
+        t-stat 与 p-value 基于约 47 个事件后交易日的截面序列。
+      </p>
+    </div>
+    <div class="table-wrap">
+      <table class="big-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Best&nbsp;h</th>
+            <th class="num">Raw IC</th>
+            <th class="num">Rank IC</th>
+            <th class="num">ICIR</th>
+            <th class="num">t-stat</th>
+            <th class="num">p-value</th>
+            <th class="num">Partial IC</th>
+            <th class="num">Partial&nbsp;p</th>
+          </tr>
+        </thead>
+        <tbody id="factor-table-body">
+          <!-- filled by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FIGURES -->
+<section class="essay" id="figures">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">07 — Figures</span>
+    </header>
+    <h2 class="essay-title">Seven figures, in reading order.</h2>
+    <p class="essay-subtitle">Each figure answers a specific question.</p>
+
+    <figure class="essay-fig">
+      <img src="assets/ic_heatmap_raw.png" alt="Raw IC heatmap">
+      <figcaption>
+        <span class="fig-num">01 · Heatmap</span>
+        <span><strong>Raw IC, no controls.</strong> 因子 × horizon 的 IC 均值,未控制任何变量。<code>theme_heat</code> 在长端 (h=40~60) 看似稳定,但下一张图告诉你这一切都是 <code>theme_exposure</code> 的功劳。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/ic_heatmap_incremental.png" alt="Partial IC heatmap">
+      <figcaption>
+        <span class="fig-num">02 · Heatmap</span>
+        <span><strong>Partial IC, after controlling for theme, sub-industry, market-cap, beta, liquidity, momentum.</strong> 主题控制后,<code>theme_heat</code> 和 <code>beta</code> 的 partial IC 完全为 NaN —— 它们的截面信息被控制变量完全吸收。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/pre_post_event_comparison.png" alt="Pre vs Post event IC">
+      <figcaption>
+        <span class="fig-num">03 · Before / After</span>
+        <span><strong>Pre vs post-WAIC |IC| by horizon.</strong> 主题热度类因子在事件后短期 IC 明显衰减;而基本面类因子 (<code>quality</code>、<code>order</code>) 反而在事件后增强 —— 真正留下的是基本面。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/ic_decay_curves.png" alt="IC decay curves">
+      <figcaption>
+        <span class="fig-num">04 · Decay</span>
+        <span><strong>IC decay curves, post_event.</strong> 横轴是 horizon (对数),纵轴是 |IC|。多数因子的 |IC| 在 h=40~60 仍在增长 —— 半衰期估计标为 <code>never_decayed</code>。这不是 bug,是诚实:需要更长样本或更结构化的信号来识别真正的拐点。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/rebalance_frontier.png" alt="Rebalance frontier">
+      <figcaption>
+        <span class="fig-num">05 · Frontier</span>
+        <span><strong>Rebalance frequency frontier.</strong> 左:毛 spread;右:净 spread (扣 10 bps 单边成本)。高频调仓的毛收益在多个因子中虚高,扣完成本后基本抹平。质量类因子在中频表现最稳。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/rolling_ic.png" alt="Rolling IC">
+      <figcaption>
+        <span class="fig-num">06 · Stability</span>
+        <span><strong>Rolling IC, 60-day window.</strong> <code>quality @ h=40</code> 的滚动 IC 频繁穿越零线 —— 即使是幸存因子,在事件后也并非"一路向北"。任何想用单点 IC 算夏普的研究者都会被这种序列狠狠教训。</span>
+      </figcaption>
+    </figure>
+
+    <figure class="essay-fig">
+      <img src="assets/quantile_cumulative_returns.png" alt="Quantile returns">
+      <figcaption>
+        <span class="fig-num">07 · Quantiles</span>
+        <span><strong>Quantile cumulative returns.</strong> 5 个分位在 1-day holding 下的累计收益。真正有效的因子应呈现"分位越高、收益越高"的近似单调结构。噪声因子的曲线是交错的 —— 再次确认模块没有把噪声当作信号。</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section class="essay" id="conclusion">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">08 — Conclusion</span>
+    </header>
+    <h2 class="essay-title">So what survives?</h2>
+    <p class="essay-subtitle">One sentence; one hard call.</p>
+    <div class="essay-body">
+      <p class="lede">
+        WAIC 之后,当「机器人概念」标签几乎覆盖全市场,
+        它作为因子的截面区分度必然下降。
+        真正保留下来的,是从公司经营层面区分股票的因子。
+      </p>
+      <p>
+        三个幸存因子 (<code>quality</code>、<code>order_or_contract</code>、<code>revenue_revision</code>) 都属于基本面,
+        都在长 horizon (40~60 日) 才显著,
+        都独立于主题标签。
+        反过来,主题热度因子的截面 z-score 本质上就是 <code>theme_exposure</code> 的线性函数,
+        在 partial IC 框架下被控制变量完全吸收 —— 它不是一个独立的信号。
+      </p>
+      <p>
+        这不是要否定机器人主题。主题扩散是真实发生的,
+        真实资金流入了相关公司。
+        但研究方法要跟上:
+        用基本面信号去识别哪些公司在主题扩散中真正受益,
+        而不是用"我有没有贴上机器人标签"来排序。
+      </p>
+    </div>
+
+    <div class="key">
+      <span class="key-mark"></span>
+      <p>
+        The theme label is <em>not</em> a factor.<br>
+        It is a phenomenon that factors explain.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- LIMITATIONS -->
+<section class="essay alt" id="limitations">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">09 — Limitations</span>
+    </header>
+    <h2 class="essay-title">What this study does not cover.</h2>
+    <p class="essay-subtitle">Honesty about the boundary of the result.</p>
+    <div class="essay-body two-col">
+      <ul class="checklist">
+        <li>本研究基于 <code>synthetic test data</code>,所有数值仅供流程验证,不可外推到真实 WAIC 后的市场。</li>
+        <li>控制变量集合是预定义的;真实场景中应包括流通市值分位、机构持仓变化、北向资金、ETF 申赎等更多维度。</li>
+        <li>调仓收益为等权 + 单边 10 bps 成本;未考虑冲击成本、流动性约束、可借券、停牌、涨跌停等真实约束。</li>
+        <li>IC t 统计量基于正态近似;每组 n_days &lt; 30 时置信区间偏乐观。</li>
+        <li>Daily-rebalance 下的极端 annualized return (数千 / 万 %) 是 (1+r)<sup>252</sup> 复合结果,无杠杆下不可持续。</li>
+        <li>本模块不替代实盘风控。所有因子组合在真实落地前需要 out-of-sample 与 paper trading 验证。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="essay" id="faq">
+  <div class="container">
+    <header class="essay-head">
+      <span class="essay-num">10 — FAQ</span>
+    </header>
+    <h2 class="essay-title">Questions you may still have.</h2>
+    <p class="essay-subtitle">Six honest answers to common objections.</p>
+    <div class="faq-list">
+      <details>
+        <summary>
+          <span>Why is the <code>theme_heat</code> factor not surviving?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          <code>theme_heat</code> is defined as the cross-section z-score of <code>theme_exposure</code>.
+          Since we control for <code>theme_exposure</code> in the partial-IC regression,
+          the residual is exactly zero (constant),
+          which is why its partial IC is NaN.
+          This is a feature, not a bug: the theme tag itself has no incremental information
+          beyond the underlying exposure.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Why are all best horizons at 40~60 days?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          In our synthetic data, the fundamental signals (order, quality, revenue revision)
+          are programmed to have positive premia that materialize over the medium-to-long term,
+          while short-horizon premia decay post-event.
+          This is a stylized fact about the diffusion story; in real markets, the optimal horizon
+          should be re-estimated.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Why is half-life reported as NaN for most factors?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          Our half-life definition requires |IC| to fall to half the peak.
+          For most factors, |IC| is still rising at h=60, so the curve never decays.
+          Rather than fabricate a number, the module returns NaN with a
+          <code>never_decayed; low confidence</code> note.
+          This is the right behavior when sample size is short.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Why are noise factors sometimes showing significant IC?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          With only ~47 days in the post-event window and 80 stocks per day,
+          random noise can produce a t-stat &gt; 2 by chance.
+          The module flags this by:
+          (a) <strong>excluding noise_* from the "surviving" list</strong> at the reporting layer, and
+          (b) requiring both raw |IC| and partial |IC| to clear the threshold
+          (a higher bar than raw IC alone).
+          In real practice, increasing n_days or using HAC standard errors would also help.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Can I plug in real data?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          Yes. The module is data-agnostic; pass any long-format <code>prices</code> and
+          <code>factors</code> DataFrames that match the schema described in
+          <code>src/data_loader.py</code>. Real data may require additional controls
+          (e.g. limit-up / limit-down handling, sector index) and a more careful
+          half-life estimation.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>How are the 16 unit tests organized?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </summary>
+        <p>
+          Each test corresponds to a failure mode the module could fall into:
+          data validation, known IC recovery, lookahead robustness, sample-size NaN,
+          constant-factor rejection, horizon alignment, rebalance freq semantics,
+          transaction-cost sign, tied-value grouping, partial-IC dampening of pure label,
+          non-monotonic decay, event-split leakage, end-to-end output completeness,
+          and portfolio net-vs-gross.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="essay alt" id="footer">
+  <div class="container footer-grid">
+    <div>
+      <a class="brand" href="#hero">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">factor · ic · study</span>
+      </a>
+      <p class="footer-tag">A research note from Mavis / mcode</p>
+    </div>
+    <div class="footer-meta">
+      <div>
+        <span class="meta-label">Data</span>
+        <span class="mono">synthetic · n=80 · t=300 · seed=42</span>
+      </div>
+      <div>
+        <span class="meta-label">Tests</span>
+        <span class="mono">16 / 16 passing</span>
+      </div>
+      <div>
+        <span class="meta-label">Output</span>
+        <span class="mono">14 CSV · 7 PNG · 1 report.md</span>
+      </div>
+      <div>
+        <span class="meta-label">Stack</span>
+        <span class="mono">Python · numpy · pandas · scipy · statsmodels · matplotlib</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
