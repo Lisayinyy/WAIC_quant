@@ -114,27 +114,42 @@ def plot_rebalance_frontier(
 def plot_rolling_ic(rolling_df: pd.DataFrame, out_path: str) -> None:
     if rolling_df.empty:
         return
-    # Pick a representative horizon (the one with highest mean |IC|)
+    # Pick a representative horizon (the one with highest mean |IC|) in the
+    # theme-diffused universe, post-event_extended (the longest continuous sample
+    # after the WAIC event). This is what the surrounding narrative talks about.
     sub = rolling_df[rolling_df["window"] == 60]
     if sub.empty:
         return
-    avg = sub.groupby(["factor_name", "horizon"])["rolling_mean"].mean().reset_index()
+    sub = sub[sub["universe"] == "theme_diffused"]
+    if sub.empty:
+        return
+    sub_post = sub[sub["period"] == "post_event_extended"]
+    if sub_post.empty:
+        # Fall back to pre_event if post_event_extended is missing
+        sub_post = sub[sub["period"] == "pre_event"]
+    avg = sub_post.groupby(["factor_name", "horizon"])["rolling_mean"].mean().reset_index()
     if avg.empty:
         return
     avg["abs"] = avg["rolling_mean"].abs()
     best = avg.sort_values("abs", ascending=False).iloc[0]
     fac, hz = best["factor_name"], int(best["horizon"])
-    sub2 = sub[(sub["factor_name"] == fac) & (sub["horizon"] == hz)].sort_values("date")
+    sub2 = sub[(sub["factor_name"] == fac) & (sub["horizon"] == hz) & (sub["period"] == "post_event_extended")].sort_values("date")
+    if sub2.empty:
+        sub2 = sub[(sub["factor_name"] == fac) & (sub["horizon"] == hz) & (sub["period"] == "pre_event")].sort_values("date")
     if sub2.empty:
         return
+    sub2 = sub2.copy()
+    sub2["date"] = pd.to_datetime(sub2["date"], errors="coerce")
+    sub2 = sub2.dropna(subset=["date"])
+    sub3 = sub2.dropna(subset=["rolling_mean"])
     fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(sub2["date"], sub2["rolling_mean"], label="60d rolling IC", color="C0")
+    ax.plot(sub3["date"], sub3["rolling_mean"], label=f"60d rolling IC ({sub3['period'].iloc[0]})", color="C0", linewidth=1.6)
     ax.axhline(0, color="grey", linewidth=0.5)
-    ax.set_title(f"Rolling IC: {fac} @ h={hz}")
+    ax.set_title(f"Rolling IC: {fac} @ h={hz}  ·  universe=theme_diffused  ·  post-WAIC")
     ax.set_xlabel("Date")
     ax.set_ylabel("60d rolling mean IC")
     ax.grid(True, alpha=0.3)
-    ax.legend()
+    ax.legend(loc="best")
     plt.tight_layout()
     plt.savefig(out_path, dpi=120)
     plt.close(fig)
