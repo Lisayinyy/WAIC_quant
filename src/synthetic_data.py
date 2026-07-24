@@ -53,9 +53,9 @@ def _sub_industry_for_asset(seed: int) -> str:
 def generate_synthetic_universe(
     n_assets: int = 200,
     n_days: int = 504,
-    start: str = "2023-01-02",
-    end: str = "2025-12-30",
-    event_date: str = "2024-07-15",
+    start: str = "2024-01-02",
+    end: str = "2026-12-30",
+    event_date: str = "2025-07-15",
     event_idx: Optional[int] = None,
     seed: int = 7,
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.Timestamp]:
