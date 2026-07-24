@@ -459,8 +459,8 @@
       "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     }
   ],
-  "event_date": "2024-07-02",
-  "data_note": "synthetic test data (n=80 assets, t=300 days, seed=42)",
+  "event_date": "2025-07-02",
+  "data_note": "synthetic test data (n=80 assets, t=300 days, seed=42) — 2026 refresh",
   "summary_metrics": {
     "n_assets": 80,
     "n_days": 300,
