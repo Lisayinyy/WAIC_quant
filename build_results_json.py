@@ -110,7 +110,31 @@ def main():
         return abs(ic) > 0.05 and abs(p) > 0.02 and abs(t) > 2.5
     n_survivors = int(factors_df.apply(_is_survivor, axis=1).sum())
 
-    # event_date & data_note from existing JSON
+    # event_date: pull from the actual IC table (most reliable). The event
+    # date is the earliest date in the post_event period of the latest run.
+    # Existing JSON is only used as a last-resort fallback.
+    event_date_str = None
+    ic_path = OUT / "daily_ic.csv"
+    if ic_path.exists():
+        try:
+            ic = pd.read_csv(ic_path)
+            if "date" in ic.columns and "period" in ic.columns:
+                post = ic[ic["period"] == "post_event"]
+                if not post.empty:
+                    event_date_str = str(pd.to_datetime(post["date"]).min().date())
+        except Exception:
+            pass
+    if event_date_str is None and DEST.exists():
+        try:
+            with DEST.open() as f:
+                existing = json.load(f)
+            event_date_str = existing.get("event_date")
+        except Exception:
+            pass
+    if event_date_str is None:
+        event_date_str = "2024-07-02"
+
+    # existing JSON for any fields we still want to preserve (data_note history etc.)
     existing: dict = {}
     if DEST.exists():
         try:
@@ -123,11 +147,8 @@ def main():
         "factors": factors,
         "portfolios": portfolios,
         "half_life": half_life,
-        "event_date": existing.get("event_date", "2024-07-02"),
-        "data_note": existing.get(
-            "data_note",
-            "synthetic test data (n=80 assets, t=300 days, seed=42)",
-        ),
+        "event_date": event_date_str,
+        "data_note": "synthetic test data (n=80 assets, t=300 days, seed=42) — 2026 refresh",
         "summary_metrics": {
             "n_assets": n_assets,
             "n_days": n_days,
