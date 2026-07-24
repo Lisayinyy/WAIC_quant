@@ -59,7 +59,7 @@
         <span class="dot"></span>
         <span>A factor-IC research note</span>
         <span class="sep">·</span>
-        <span class="mono">2024 · Q3</span>
+        <span class="mono">2026 · Q3</span>
         <span class="sep">·</span>
         <span class="mono">n = 80 / 300 d</span>
       </p>
@@ -120,7 +120,7 @@
     <p class="essay-subtitle">In one sentence: the theme tag is not a factor.</p>
     <div class="essay-body">
       <p>
-        WAIC 2024 之后,具身智能 / 机器人主题从少数龙头扩散到接近 <strong>100%</strong> 的相关股票。
+        WAIC 2025 之后,具身智能 / 机器人主题从少数龙头扩散到接近 <strong>100%</strong> 的相关股票。
         在这个背景下,本文用 80 只合成资产、10 个因子 (含 2 个 noise 对照)、
         8 个 horizon (1 / 2 / 3 / 5 / 10 / 20 / 40 / 60 日)、
         4 个调仓频率 (1 / 5 / 10 / 20 日) 构建了一套端到端因子 IC 模块,
@@ -248,7 +248,7 @@
 res = run_pipeline(
     prices=prices_df,            # long: date, asset, close, theme_exposure, ...
     factors=factors_df,          # long: date, asset, factor_name, factor_value
-    event_date="2024-07-02",     # WAIC / 主题扩散事件日
+    event_date="2025-07-02",     # WAIC / 主题扩散事件日
     output_dir="outputs",
     horizons=[1, 2, 3, 5, 10, 20, 40, 60],
     rebalance_frequencies=[1, 5, 10, 20],
@@ -270,8 +270,8 @@ res = run_pipeline(
     <div class="essay-body two-col">
       <div>
         <p>
-          研究对象是 80 只合成股票、300 个交易日 (2023-01 ~ 2025-12)、
-          事件日 <code>2024-07-02</code>。
+          研究对象是 80 只合成股票、300 个交易日 (2024-01 ~ 2026-12)、
+          事件日 <code>2025-07-02</code>。
           事件前,机器人主题暴露集中在 28% 的核心股票;
           事件后 120 个交易日内,暴露沿"工业机器人 → 汽车零部件 → 自动化 → 半导体 → AI 软件 → 传感器"
           这条产业链逐步扩散,最终接近 <strong>100%</strong> 的相关股票都沾上了机器人。
