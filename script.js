@@ -16,7 +16,19 @@
 
     const tbody = document.getElementById('factor-table-body');
     if (tbody) {
-      const survivors = new Set(['quality', 'order_or_contract', 'revenue_revision']);
+      // Compute survivors from the data itself: a survivor is a factor whose
+      // partial IC (after controlling for theme / industry / size / beta /
+      // liquidity / momentum) is still meaningfully large AND statistically
+      // significant. This keeps the highlight honest: if the pipeline ever
+      // produces different survivors, the table reflects it.
+      const isSurvivor = (f) => {
+        const partial = parseFloat(f.partial_ic_mean);
+        const t = parseFloat(f.partial_t_stat);
+        const ic = parseFloat(f.ic_mean);
+        if (!isFinite(partial) || !isFinite(t) || !isFinite(ic)) return false;
+        return Math.abs(ic) > 0.05 && Math.abs(partial) > 0.02 && Math.abs(t) > 2.5;
+      };
+      const survivors = new Set(data.factors.filter(isSurvivor).map(f => f.factor_name));
 
       const factors = data.factors;
       factors.sort((a, b) => {
