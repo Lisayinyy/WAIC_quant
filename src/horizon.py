@@ -105,6 +105,27 @@ def _estimate_half_life(horizons: np.ndarray, abs_ic: np.ndarray) -> Tuple[float
     return float("nan"), "never_decayed"
 
 
+def _estimate_plateau_horizon(horizons: np.ndarray, abs_ic: np.ndarray) -> float:
+    """If the curve never decays, return the horizon at which |IC| is still
+    at >= 70% of the peak. This is the *effective horizon* under a 'no-decay'
+    regime. NaN if peak is too weak to be meaningful.
+    """
+    if len(horizons) < 2 or np.all(np.isnan(abs_ic)):
+        return float("nan")
+    peak = float(np.nanmax(abs_ic))
+    if peak < 1e-4:
+        return float("nan")
+    peak_idx = int(np.nanargmax(abs_ic))
+    # Walk forward from peak until |IC| < 0.7 * peak (or end of sample).
+    threshold = 0.7 * peak
+    for i in range(peak_idx + 1, len(horizons)):
+        if not np.isnan(abs_ic[i]) and abs_ic[i] < threshold:
+            return float(horizons[i])
+    # If still above 70% of peak all the way to the last horizon, the entire
+    # sample is the "plateau" — return the last horizon we observed.
+    return float(horizons[-1])
+
+
 def compute_decay_curve(
     daily_raw: pd.DataFrame,
     horizons: List[int],
@@ -177,7 +198,7 @@ def compute_half_life(
     -------
     pd.DataFrame
         Columns: factor_name, period, universe, peak_horizon, peak_abs_ic,
-        half_life_horizon, recommended_rebalance_frequency,
+        half_life_horizon, plateau_horizon, recommended_rebalance_frequency,
         curve_monotonicity, reliability_note.
     """
     if decay_df.empty:
@@ -192,11 +213,20 @@ def compute_half_life(
         peak_h = int(horizons[peak_idx]) if len(horizons) else 0
         peak_v = float(abs_ic[peak_idx]) if len(abs_ic) else float("nan")
         hl, note = _estimate_half_life(horizons, abs_ic)
+        plateau = _estimate_plateau_horizon(horizons, abs_ic)
         mono = _monotonicity_label(ic)
-        # Recommend rebalance: largest freq <= half_life (or smallest if hl is small)
+        # Recommend rebalance.
         if np.isnan(hl) or hl <= 0:
-            rec = 1
-            note_full = f"{note}; recommend rebalance=1 (low confidence)"
+            # Curve never decays to half peak within sample: use plateau horizon
+            # (the horizon at which |IC| is still at >= 70% of peak). This is a
+            # much better proxy than 'rebalance=1' when the IC keeps climbing.
+            if not np.isnan(plateau) and plateau > 0:
+                candidates = [f for f in rebalance_frequencies if f <= plateau]
+                rec = max(candidates) if candidates else rebalance_frequencies[-1]
+                note_full = f"never_decayed_within_sample; plateau_horizon={int(plateau)}; recommend rebalance={rec} (IC still strong)"
+            else:
+                rec = 1
+                note_full = f"{note}; recommend rebalance=1 (low confidence)"
         else:
             # Pick the largest rebalance frequency that is <= half_life
             candidates = [f for f in rebalance_frequencies if f <= hl]
@@ -210,6 +240,7 @@ def compute_half_life(
                 "peak_horizon": peak_h,
                 "peak_abs_ic": peak_v,
                 "half_life_horizon": hl,
+                "plateau_horizon": plateau,
                 "recommended_rebalance_frequency": rec,
                 "curve_monotonicity": mono,
                 "reliability_note": note_full,
