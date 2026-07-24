@@ -15,13 +15,13 @@
       "p_value": 0.0,
       "ci_low": -0.1752831859967238,
       "ci_high": -0.1337845472785081,
-      "partial_ic_mean": "",
-      "partial_ic_std": "",
-      "partial_icir": "",
-      "partial_t_stat": "",
-      "partial_p_value": "",
-      "partial_ci_low": "",
-      "partial_ci_high": ""
+      "partial_ic_mean": null,
+      "partial_ic_std": null,
+      "partial_icir": null,
+      "partial_t_stat": null,
+      "partial_p_value": null,
+      "partial_ci_low": null,
+      "partial_ci_high": null
     },
     {
       "factor_name": "liquidity",
@@ -38,13 +38,13 @@
       "p_value": 0.0260217746107045,
       "ci_low": 0.0044150703580768,
       "ci_high": 0.0552851179025086,
-      "partial_ic_mean": "",
-      "partial_ic_std": "",
-      "partial_icir": "",
-      "partial_t_stat": "",
-      "partial_p_value": "",
-      "partial_ci_low": "",
-      "partial_ci_high": ""
+      "partial_ic_mean": null,
+      "partial_ic_std": null,
+      "partial_icir": null,
+      "partial_t_stat": null,
+      "partial_p_value": null,
+      "partial_ci_low": null,
+      "partial_ci_high": null
     },
     {
       "factor_name": "noise_alpha",
@@ -130,13 +130,13 @@
       "p_value": 0.236577984917613,
       "ci_low": -0.0729443537429304,
       "ci_high": 0.0175655162538793,
-      "partial_ic_mean": "",
-      "partial_ic_std": "",
-      "partial_icir": "",
-      "partial_t_stat": "",
-      "partial_p_value": "",
-      "partial_ci_low": "",
-      "partial_ci_high": ""
+      "partial_ic_mean": null,
+      "partial_ic_std": null,
+      "partial_icir": null,
+      "partial_t_stat": null,
+      "partial_p_value": null,
+      "partial_ci_low": null,
+      "partial_ci_high": null
     },
     {
       "factor_name": "quality",
@@ -199,13 +199,13 @@
       "p_value": 3.455014052633487e-13,
       "ci_low": 0.0518660269747279,
       "ci_high": 0.0769928753246975,
-      "partial_ic_mean": "",
-      "partial_ic_std": "",
-      "partial_icir": "",
-      "partial_t_stat": "",
-      "partial_p_value": "",
-      "partial_ci_low": "",
-      "partial_ci_high": ""
+      "partial_ic_mean": null,
+      "partial_ic_std": null,
+      "partial_icir": null,
+      "partial_t_stat": null,
+      "partial_p_value": null,
+      "partial_ci_low": null,
+      "partial_ci_high": null
     },
     {
       "factor_name": "valuation",
@@ -233,6 +233,7 @@
   ],
   "portfolios": [
     {
+      "portfolio": "A_theme_exposure",
       "factor_name": "theme_exposure",
       "n_periods": 299,
       "cum_return_gross": 0.0074653703054663,
@@ -242,12 +243,10 @@
       "max_drawdown": -0.1346122897015753,
       "turnover": 0.7199143620332121,
       "transaction_cost": 0.0007199143620332,
-      "net_return": 0.0067400815161322,
-      "ic": "",
-      "icir": "",
-      "portfolio": "A_theme_exposure"
+      "net_return": 0.0067400815161322
     },
     {
+      "portfolio": "B_single_best_factor",
       "factor_name": "beta",
       "n_periods": 299,
       "cum_return_gross": 0.0507319950528115,
@@ -257,12 +256,10 @@
       "max_drawdown": -0.1477916308930329,
       "turnover": 0.0166666666666666,
       "transaction_cost": 1.6666666666666667e-05,
-      "net_return": 0.050714482852894,
-      "ic": "",
-      "icir": "",
-      "portfolio": "B_single_best_factor"
+      "net_return": 0.050714482852894
     },
     {
+      "portfolio": "C_incremental_blend",
       "factor_name": "quality_inc",
       "n_periods": 299,
       "cum_return_gross": 0.1672130130180478,
@@ -272,12 +269,10 @@
       "max_drawdown": -0.1624741097135306,
       "turnover": 0.3713541666666666,
       "transaction_cost": 0.0003713541666666,
-      "net_return": 0.1667795636022759,
-      "ic": "",
-      "icir": "",
-      "portfolio": "C_incremental_blend"
+      "net_return": 0.1667795636022759
     },
     {
+      "portfolio": "C_incremental_blend",
       "factor_name": "quality_inc",
       "n_periods": 299,
       "cum_return_gross": 0.1672130130180478,
@@ -287,27 +282,23 @@
       "max_drawdown": -0.1624741097135306,
       "turnover": 0.3713541666666666,
       "transaction_cost": 0.0003713541666666,
-      "net_return": 0.1667795636022759,
-      "ic": "",
-      "icir": "",
-      "portfolio": "C_incremental_blend"
+      "net_return": 0.1667795636022759
     },
     {
+      "portfolio": "C_incremental_blend",
       "factor_name": "order_or_contract_inc",
       "n_periods": 299,
       "cum_return_gross": 0.0,
       "ann_return_gross": 0.0,
       "ann_vol": 0.0,
-      "sharpe_gross": "",
+      "sharpe_gross": null,
       "max_drawdown": 0.0,
       "turnover": 1.0,
       "transaction_cost": 0.001,
-      "net_return": -0.001,
-      "ic": "",
-      "icir": "",
-      "portfolio": "C_incremental_blend"
+      "net_return": -0.001
     },
     {
+      "portfolio": "D_multi_horizon_h1",
       "factor_name": "noise_alpha_hz1",
       "n_periods": 299,
       "cum_return_gross": -0.0554530741292719,
@@ -317,12 +308,10 @@
       "max_drawdown": -0.1822969451747607,
       "turnover": 0.5953177257525084,
       "transaction_cost": 0.0005953177257525,
-      "net_return": -0.0560153796570478,
-      "ic": "",
-      "icir": "",
-      "portfolio": "D_multi_horizon_h1"
+      "net_return": -0.0560153796570478
     },
     {
+      "portfolio": "D_multi_horizon_h10",
       "factor_name": "beta_hz10",
       "n_periods": 299,
       "cum_return_gross": 0.0507319950528115,
@@ -332,12 +321,10 @@
       "max_drawdown": -0.1477916308930329,
       "turnover": 0.0166666666666666,
       "transaction_cost": 1.6666666666666667e-05,
-      "net_return": 0.050714482852894,
-      "ic": "",
-      "icir": "",
-      "portfolio": "D_multi_horizon_h10"
+      "net_return": 0.050714482852894
     },
     {
+      "portfolio": "D_multi_horizon_h40",
       "factor_name": "beta_hz40",
       "n_periods": 299,
       "cum_return_gross": 0.0507319950528115,
@@ -347,10 +334,7 @@
       "max_drawdown": -0.1477916308930329,
       "turnover": 0.0666666666666666,
       "transaction_cost": 6.666666666666667e-05,
-      "net_return": 0.0506619462531414,
-      "ic": "",
-      "icir": "",
-      "portfolio": "D_multi_horizon_h40"
+      "net_return": 0.0506619462531414
     }
   ],
   "half_life": [
@@ -360,10 +344,11 @@
       "universe": "all",
       "peak_horizon": 40,
       "peak_abs_ic": 0.1545338666376159,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "peak_then_decay",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "liquidity",
@@ -371,10 +356,11 @@
       "universe": "all",
       "peak_horizon": 40,
       "peak_abs_ic": 0.0298500941302927,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "noise_alpha",
@@ -382,10 +368,11 @@
       "universe": "all",
       "peak_horizon": 20,
       "peak_abs_ic": 0.0410662747704723,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "noise_beta",
@@ -393,10 +380,11 @@
       "universe": "all",
       "peak_horizon": 20,
       "peak_abs_ic": 0.0426610187911085,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 40.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=40; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "order_or_contract",
@@ -404,10 +392,11 @@
       "universe": "all",
       "peak_horizon": 60,
       "peak_abs_ic": 0.1050524153241889,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "price_momentum",
@@ -415,10 +404,11 @@
       "universe": "all",
       "peak_horizon": 60,
       "peak_abs_ic": 0.0276894187445255,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "quality",
@@ -426,10 +416,11 @@
       "universe": "all",
       "peak_horizon": 40,
       "peak_abs_ic": 0.0633505344220588,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "revenue_revision",
@@ -437,10 +428,11 @@
       "universe": "all",
       "peak_horizon": 60,
       "peak_abs_ic": 0.0618910454005843,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "theme_heat",
@@ -448,10 +440,11 @@
       "universe": "all",
       "peak_horizon": 60,
       "peak_abs_ic": 0.0644294511497128,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     },
     {
       "factor_name": "valuation",
@@ -459,10 +452,11 @@
       "universe": "all",
       "peak_horizon": 60,
       "peak_abs_ic": 0.0481152763511341,
-      "half_life_horizon": "",
-      "recommended_rebalance_frequency": 1,
+      "half_life_horizon": null,
+      "plateau_horizon": 60.0,
+      "recommended_rebalance_frequency": 20,
       "curve_monotonicity": "non_monotonic",
-      "reliability_note": "never_decayed; recommend rebalance=1 (low confidence)"
+      "reliability_note": "never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)"
     }
   ],
   "event_date": "2024-07-02",
