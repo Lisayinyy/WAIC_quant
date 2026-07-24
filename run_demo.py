@@ -68,6 +68,13 @@ def main():
     print()
     print(f"完整报告: {res['report_path']}")
 
+    # Rebuild the website's data feed so it stays in sync with the run.
+    try:
+        from build_results_json import main as build_results_json_main
+        build_results_json_main()
+    except Exception as e:
+        print(f"(warning) could not rebuild results.json: {e}")
+
 
 if __name__ == "__main__":
     main()
