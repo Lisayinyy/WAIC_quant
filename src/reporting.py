@@ -91,19 +91,32 @@ def plot_rebalance_frontier(
 ) -> None:
     if rebal_summary.empty:
         return
-    fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+    # Winsorize spreads to [-CLIP, +CLIP] so daily-rebalance outliers (e.g.
+    # quality @ freq=1 = 2200) don't crush everything else onto the zero line.
+    CLIP = 20.0
+    gross = rebal_summary["top_bottom_spread_gross"].clip(-CLIP, CLIP)
+    net = rebal_summary["top_bottom_spread_net"].clip(-CLIP, CLIP)
+    fig, axes = plt.subplots(1, 3, figsize=(15, 4.5))
     for fac, g in rebal_summary.groupby("factor_name"):
         g = g.sort_values("rebalance_frequency")
-        axes[0].plot(g["rebalance_frequency"], g["top_bottom_spread_gross"],
-                     marker="o", label=fac)
-        axes[1].plot(g["rebalance_frequency"], g["top_bottom_spread_net"],
-                     marker="o", label=fac)
-    for ax, title in zip(axes, ["Gross spread", "Net spread (after costs)"]):
+        g_gross = gross.loc[g.index]
+        g_net = net.loc[g.index]
+        axes[0].plot(g["rebalance_frequency"], g_gross, marker="o", label=fac)
+        axes[1].plot(g["rebalance_frequency"], g_net, marker="o", label=fac)
+        axes[2].plot(g["rebalance_frequency"], g["sharpe_top"], marker="o", label=fac)
+    titles = [
+        f"Gross spread (clipped to ±{CLIP:.0f})",
+        f"Net spread (clipped to ±{CLIP:.0f})",
+        "Sharpe ratio (top quantile)",
+    ]
+    ylabels = ["Top-Bottom spread", "Top-Bottom spread", "Sharpe (annualized)"]
+    for ax, title, ylabel in zip(axes, titles, ylabels):
         ax.set_xscale("log")
         ax.set_xlabel("Rebalance frequency (days)")
-        ax.set_ylabel("Top-Bottom spread")
-        ax.set_title(title)
-        ax.axhline(0, color="grey", linewidth=0.5)
+        ax.set_ylabel(ylabel)
+        ax.set_title(title, fontsize=10)
+        if "clipped" in title:
+            ax.axhline(0, color="grey", linewidth=0.5)
         ax.grid(True, alpha=0.3)
         ax.legend(fontsize=7)
     plt.tight_layout()
@@ -158,20 +171,37 @@ def plot_rolling_ic(rolling_df: pd.DataFrame, out_path: str) -> None:
 def plot_quantile_returns(quantile_df: pd.DataFrame, out_path: str) -> None:
     if quantile_df.empty:
         return
-    fig, ax = plt.subplots(figsize=(10, 5))
-    palette = plt.cm.viridis(np.linspace(0, 1, quantile_df["quantile"].nunique()))
-    for (fac, freq), g in quantile_df.groupby(["factor_name", "rebalance_frequency"]):
-        g = g.sort_values("quantile")
-        ax.plot(g["quantile"], g["cum_return"], marker="o",
-                color=palette[int(freq) - 1] if freq <= len(palette) else None,
-                label=f"{fac} freq={freq}", alpha=0.6)
-    ax.set_xlabel("Quantile (1=low, N=high)")
-    ax.set_ylabel("Cumulative return (gross)")
-    ax.set_title("Quantile cumulative returns")
-    ax.axhline(0, color="grey", linewidth=0.5)
-    ax.grid(True, alpha=0.3)
-    ax.legend(fontsize=7, loc="best")
-    plt.tight_layout()
+    # Aggregate to one (factor, freq) per quantile (averaging across horizons).
+    agg = (
+        quantile_df.groupby(["factor_name", "rebalance_frequency", "quantile"])
+        ["cum_return"].mean().reset_index()
+    )
+    # Winsorize the cum_return so that freak single-cell outliers (e.g.
+    # order_or_contract @ freq=1, Q3, h=60 reaches 1.6e6) don't crush the y-axis.
+    CLIP = 6.0
+    agg["cum_return"] = agg["cum_return"].clip(-CLIP, CLIP)
+    freqs = sorted(agg["rebalance_frequency"].unique())
+    factors = sorted(agg["factor_name"].unique())
+    fig, axes = plt.subplots(1, len(freqs), figsize=(4 * len(freqs), 4.5), sharey=True)
+    if len(freqs) == 1:
+        axes = [axes]
+    palette = plt.cm.tab10(np.linspace(0, 1, max(len(factors), 1)))
+    for ax, freq in zip(axes, freqs):
+        sub = agg[agg["rebalance_frequency"] == freq]
+        for fac, g in sub.groupby("factor_name"):
+            g = g.sort_values("quantile")
+            ax.plot(g["quantile"], g["cum_return"], marker="o",
+                    color=palette[factors.index(fac)], label=fac, linewidth=1.2)
+        ax.set_title(f"rebalance = {freq} day{'s' if freq > 1 else ''}")
+        ax.set_xlabel("Quantile (1=low, N=high)")
+        ax.axhline(0, color="grey", linewidth=0.5)
+        ax.grid(True, alpha=0.3)
+    axes[0].set_ylabel(f"Cumulative return (clipped to ±{CLIP:.0f}, avg over horizons)")
+    # One shared legend at the bottom.
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=5, fontsize=8,
+               bbox_to_anchor=(0.5, -0.02))
+    plt.tight_layout(rect=(0, 0.06, 1, 1))
     plt.savefig(out_path, dpi=120)
     plt.close(fig)
 
