@@ -516,7 +516,7 @@ res = run_pipeline(
       <img src="assets/rebalance_frontier.png" alt="Rebalance frontier">
       <figcaption>
         <span class="fig-num">05 · Frontier</span>
-        <span><strong>Rebalance frequency frontier.</strong> 左:毛 spread;右:净 spread (扣 10 bps 单边成本)。高频调仓的毛收益在多个因子中虚高,扣完成本后基本抹平。质量类因子在中频表现最稳。</span>
+        <span><strong>Rebalance frequency frontier.</strong> 左:毛 spread (clip 到 ±20);中:净 spread (扣 10 bps 单边成本,clip 到 ±20);右:top quantile 的 annualized Sharpe。频率=1 day 的所有 spread 被 clip 后才能看到差异 — 这是个警告信号。Quality 在所有频率都领先。</span>
       </figcaption>
     </figure>
 
@@ -532,7 +532,7 @@ res = run_pipeline(
       <img src="assets/quantile_cumulative_returns.png" alt="Quantile returns">
       <figcaption>
         <span class="fig-num">07 · Quantiles</span>
-        <span><strong>Quantile cumulative returns.</strong> 5 个分位在 1-day holding 下的累计收益。真正有效的因子应呈现"分位越高、收益越高"的近似单调结构。噪声因子的曲线是交错的 —— 再次确认模块没有把噪声当作信号。</span>
+        <span><strong>Quantile cumulative returns.</strong> 4 个调仓频率下,10 个因子在 5 个分位上的平均累计收益 (clip 到 ±6)。频率越高、总体收益越大 (复利效应); 因子之间的差异在中频 (5-10 天) 表现最明显。</span>
       </figcaption>
     </figure>
   </div>
