@@ -1,0 +1,11 @@
+factor_name,period,universe,peak_horizon,peak_abs_ic,half_life_horizon,plateau_horizon,recommended_rebalance_frequency,curve_monotonicity,reliability_note
+beta,post_event,all,40,0.1545338666376159,,60.0,20,peak_then_decay,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+liquidity,post_event,all,40,0.0298500941302927,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+noise_alpha,post_event,all,20,0.0410662747704723,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+noise_beta,post_event,all,20,0.0426610187911085,,40.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=40; recommend rebalance=20 (IC still strong)
+order_or_contract,post_event,all,60,0.1050524153241889,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+price_momentum,post_event,all,60,0.0276894187445255,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+quality,post_event,all,40,0.0633505344220588,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+revenue_revision,post_event,all,60,0.0618910454005843,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+theme_heat,post_event,all,60,0.0644294511497128,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
+valuation,post_event,all,60,0.0481152763511341,,60.0,20,non_monotonic,never_decayed_within_sample; plateau_horizon=60; recommend rebalance=20 (IC still strong)
